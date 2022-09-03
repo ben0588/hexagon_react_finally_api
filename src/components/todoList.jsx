@@ -228,7 +228,9 @@ function TodoList() {
                             <h1 >您尚未登入，無權限訪問此頁面！ </h1>
                         </div>
                         <div className='todoList_error_a'>
-                            <Link to="/">前往登入頁</Link>
+                            <Link onClick={()=>{
+                                navigate('/');
+                            }}>前往登入頁</Link>
                         </div>
                     </div>}
         
