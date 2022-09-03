@@ -30,15 +30,18 @@ function TodoList() {
     }
 
     // 提示吐司樣式設定
+    // 提醒吐司樣式
     const options = {
         position: "bottom-right",
-        autoClose: 2000,
+        autoClose: 1500,
         hideProgressBar:false,
         newestOnTop:false,
         rtl:false,
-        pauseOnHover:false,
+        pauseOnHover: false,
+        draggable:false,
+        closeOnClick: false,
     };
-
+    
     // 區分完全、待完成、已完成列表 ( 不動到原陣列 )
     const newList = toggleState == 1 ? newTodoList 
         // 將原陣列中狀態是false的返回
@@ -92,10 +95,21 @@ function TodoList() {
             // 更新localStorage，防止重新整理後出現列表順序不同
             let jsonList = JSON.stringify(undoneList)
             localStorage.setItem('listData',jsonList);
+            toast.success('已刪除所有已完成項目', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                draggable: false,
+                progress: undefined,
+                pauseOnHover: false,
+                theme:"dark"
+                });
             // console.log('API刪除資料成功，已更新localStorage & 畫面更新')
         })
         .catch((error)=>{})
         }})
+        
     }
 
     // 會員登出
@@ -232,7 +246,7 @@ function TodoList() {
                     </div>}
                     
                 </div>
-                    <ToastContainer />
+                    <ToastContainer pauseOnFocusLoss={false}/>
                 </div>
                 </div>:<div className="todoList_error_data" >
                         <div className='todoList_error_img' >

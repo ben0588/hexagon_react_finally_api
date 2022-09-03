@@ -42,7 +42,7 @@ function AddTodoList({userToken,options,newTodoList,setNewTodoList}) {
                 let newList = [...newTodoList,{id:newId,content:newContent,completed_at:null}];
                 setNewTodoList(newList)
                 // 
-                toast.success(`新增待辦事項成功 !`,options)
+                toast.success('新增待辦事項成功',options);
                 // 更新暫存
                 let jsonList = JSON.stringify(newList)
                 localStorage.setItem('listData',jsonList);
@@ -71,7 +71,7 @@ function AddTodoList({userToken,options,newTodoList,setNewTodoList}) {
                     <IoIosAdd />
                   </a>
               </div>
-              <ToastContainer style={{color:'red'}}/>
+              <ToastContainer style={{color:'red'}} pauseOnFocusLoss={false}/>
           </div>
       )
 }

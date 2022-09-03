@@ -655,6 +655,20 @@ nav ul a span {
   color: #ff0000;
 }
 
+/* 測試在輸入框中新增圖標 */
+.formControls_label{
+  width: 200px;
+  position: relative;
+}
+
+.icon-show{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 200%;
+  right: -42%;
+  color: rgb(58, 58, 58);
+}
 
 
 /* .formControls_input {

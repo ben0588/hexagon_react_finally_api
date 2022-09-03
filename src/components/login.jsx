@@ -12,8 +12,13 @@ import { sha256, sha224 } from 'js-sha256'; //加密用
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
+
+import { RiEyeFill } from 'react-icons/ri';
+import { RiEyeOffFill } from 'react-icons/ri';
+
 function Login() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm(); // 表單驗證用
+    const [iconShow,setIconShow] = useState(0); // 切換顯示密碼圖標
     const [passwordType,sePasswordType] = useState('password') // 切換密碼格式
     const navigate = useNavigate(); // 用來跳轉網只用
     const [userCheckToken,setUserCheckToken] = useState(''); // 讀取已存在的'userToken'，判斷頁面
@@ -37,7 +42,9 @@ function Login() {
         hideProgressBar:false,
         newestOnTop:false,
         rtl:false,
-        pauseOnHover:false,
+        pauseOnHover: false,
+        draggable:false,
+        closeOnClick: false,
     };
 
     // 會員登入 (無註冊或失敗則會跳錯誤)
@@ -117,7 +124,9 @@ function Login() {
                             navigate('/todoList')
                         },2500)
 
-                    }).catch((error)=>{})
+                    }).catch((error)=>{
+                        toast.error(`${error.response.data.message}，請再次確認帳號密碼`,options)
+                    })
                 }else {
                     // 歷史紀錄中沒有e的存在時，取全新的資料
              
@@ -147,7 +156,9 @@ function Login() {
                             },2500)
         
                         })
-                        .catch((error)=>{})
+                        .catch((error)=>{
+                            toast.error(`${error.response.data.message}，請再次確認帳號密碼`,options)
+                        })
                         
                     }
                    
@@ -235,6 +246,21 @@ function Login() {
           })
     }
 
+    
+    // 切換密碼名碼顯示
+    const toggleBtn = ()=>{
+        if (iconShow == 0){
+            // console.log('顯示隱碼')
+            setIconShow(1)
+            sePasswordType('text')
+        }
+        if (iconShow ==1 ){
+            // console.log('顯示名碼')
+            setIconShow(0)
+            sePasswordType('password')
+        }
+    }
+
    
     return ( 
             <div id="loginPage" className="bg-yellow">
@@ -250,10 +276,12 @@ function Login() {
                         <input className="formControls_input" type="text" id="email" name="email" placeholder="請輸入 email" 
                         {...register('email',{ required:{value:true,message:'此欄位不可留空'},pattern:{value:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,message:'不符合 Email 規則'}})}
                         /><span>{errors.email?.message}</span>
-                        <label className="formControls_label" htmlFor="password">密碼</label>
+                        <label className="formControls_label" htmlFor="password">密碼
+                            <i className="icon-show" onClick={toggleBtn}>{iconShow == 0? <RiEyeOffFill size={ '25px' }/>:<RiEyeFill  size={ '25px' }/>}</i>
+                        </label>
                         <input className="formControls_input" type={passwordType} name="password" id="password" placeholder="請輸入密碼" 
                         {...register('password',{required:{value:true,message:'此欄位不可留空'},minLength:{value:6,message:'密碼最少需要六位數'}})}
-                        /><span><input type="checkbox" onClick={showPassword}/><a style={{color:'black'}}>顯示密碼</a></span>
+                        />
                         <span>{errors.password?.message}</span>
                         <input className="formControls_btnSubmit" type="submit" value="登入" />
                         <Link className="formControls_btnLink" to="/register">註冊帳號</Link>
@@ -273,7 +301,7 @@ function Login() {
                     }
                     
                 </div>
-                <ToastContainer />
+                <ToastContainer pauseOnFocusLoss={false} />
             </div>
         </div>
      );
