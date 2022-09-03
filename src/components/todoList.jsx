@@ -174,8 +174,6 @@ function TodoList() {
         setNewTodoList(JSON.parse(listData))
     },[toggleState])
 
-    console.log(newTodoList)
-
     return ( 
         <div>
     {userToken ?  <div id="todoListPage" className="bg-half">
