@@ -142,6 +142,7 @@ function Login() {
                                 html: `歡迎 ${getNickname} ${success}，即將前往行事曆`,
                                 timer: 1500,
                                 timerProgressBar: true,
+                                showConfirmButton: false,
                                 }).then((result) => {
                                 /* Read more about handling dismissals below */
                                 if (result.dismiss === Swal.DismissReason.timer) {
@@ -197,6 +198,7 @@ function Login() {
                                 html: `歡迎 ${getNickname} ${success}，即將前往行事曆`,
                                 timer: 1500,
                                 timerProgressBar: true,
+                                showConfirmButton: false,
                                 }).then((result) => {
                                 /* Read more about handling dismissals below */
                                 if (result.dismiss === Swal.DismissReason.timer) {
