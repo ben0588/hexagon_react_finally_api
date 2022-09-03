@@ -60,8 +60,22 @@ function TodoList() {
            
     }
 
-    // 刪除api ( 點擊清除已完成項目時觸發 )
+    // 清除"所有已完成項目" ( 點擊清除已完成項目時觸發 )
     const deleteTodoFn =(id)=>{
+        MySwal.fire({
+            title: '刪除所有已完成項目?',
+            text: "確認後將會進行刪除",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '確認',
+            cancelButtonText: '取消',
+          })
+          .then((result) => {
+            // console.log(result)
+            // 點擊確認才執行登出
+            if (result.isConfirmed) {
         // console.log(id) // id取成功後在執行以下
         const deleteApi = `https://todoo.5xcamp.us/todos/${id}`
         const config = {
@@ -81,6 +95,7 @@ function TodoList() {
             // console.log('API刪除資料成功，已更新localStorage & 畫面更新')
         })
         .catch((error)=>{})
+        }})
     }
 
     // 會員登出
@@ -159,6 +174,7 @@ function TodoList() {
         setNewTodoList(JSON.parse(listData))
     },[toggleState])
 
+    console.log(newTodoList)
 
     return ( 
         <div>
@@ -228,9 +244,7 @@ function TodoList() {
                             <h1 >您尚未登入，無權限訪問此頁面！ </h1>
                         </div>
                         <div className='todoList_error_a'>
-                            <Link onClick={()=>{
-                                navigate('/');
-                            }}>前往登入頁</Link>
+                            <Link to="/">前往登入頁</Link>
                         </div>
                     </div>}
         

@@ -1,13 +1,15 @@
 import React from 'react';
 import { RiDeleteBack2Fill }  from 'react-icons/ri';
+import { RiEdit2Fill }  from 'react-icons/ri';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 
 
 function TestLi ({value,title,index,userToken,toast,newTodoList,setNewTodoList,options}){
-    
+    const [checkEdit,setCheckEdit] = useState(0); // 判斷是否進入編輯狀態
+    const [checkInput,setCheckInput] = useState(''); // 編輯時輸入的文字
     // 單一刪除按鈕元件
     const deleteList =(id)=>{
         // 先確認進入的id值是否跟list對應的相同
@@ -38,6 +40,55 @@ function TestLi ({value,title,index,userToken,toast,newTodoList,setNewTodoList,o
         .catch((error)=>{
             toast.error(`刪除代辦事項失敗 !`,options)
         })
+    }
+
+    // 編輯清單內容
+    const editList =(id)=>{
+        if (checkEdit == 0){
+            // console.log('進入編輯狀態',id)
+            toast.info('您已進入編輯模式，修改完畢請再次點擊編輯圖標',options)
+            setCheckEdit(1); // 改變成輸入框
+        }
+        else if (checkEdit == 1 ){
+            const editApi = `https://todoo.5xcamp.us/todos/${id}`;
+            const data = {
+                todo:{
+                    content:checkInput
+                }
+            }
+            const config = {
+                headers:{
+                    "Authorization":userToken,
+                    "Content-Type":"application/json"
+                }
+            }
+            axios.put(editApi,data,config)
+                .then(response=>{
+                    toast.success('編輯資料成功',options)
+                    // console.log(response)
+                    const newId = response.data.id;
+                    const newContent = response.data.content;
+                    // 更新資料完成後，將內容更新在列表中
+                    const item = newTodoList.map((value)=>{
+                        return value.id == newId ? {id:value.id,content:newContent,completed_at:value.completed_at}:value
+                    })
+
+                    // 成功後在次呼叫更新localStorage的newList資料
+                    let jsonList = JSON.stringify(item);
+                    localStorage.setItem('listData',jsonList);
+                    setNewTodoList(item)
+                })
+
+            console.log('完成取消編輯',id)
+            setCheckEdit(0) // 恢復成存文字
+        }
+
+        
+
+
+        // let newSpan = document.querySelector('#spanValue').innerText;
+        // console.log(newSpan)
+        
     }
 
 
@@ -80,11 +131,18 @@ function TestLi ({value,title,index,userToken,toast,newTodoList,setNewTodoList,o
                 checked={value.completed_at? "checkbox":''}
                 // 當選擇時更新List的狀態成True，把id值待進去做判斷
                 onChange={()=>{changeListState(value.id)}}/>
-                <span>{value.content}</span>
+                <span id="spanValue">{checkEdit == 0 ? value.content
+                :<input type="text" 
+                defaultValue={value.content}
+                onChange={(e)=>{setCheckInput(e.target.value)}}
+                />}</span>
                 
                 
             </label>
             <div className='icon_span'>
+            <a className="icon2"  onClick={()=>{editList(value.id )}} >
+                    <RiEdit2Fill  size={ '25px'}/>
+                </a>
                 <a className="icon2" onClick={()=>{deleteList(value.id)}} >
                     <RiDeleteBack2Fill  size={ '25px'}/>
                 </a>
