@@ -60,26 +60,103 @@ function Login() {
         }
        await axios.post(loginApi,checkData,config)
             .then(response=>{
-                // 登入成功後將表頭的token存起來
-                const getToken = response.headers.authorization;
-                const getNickname = response.data.nickname;
-                const getEmail = response.data.email;
-                const success = response.data.message;
-
-                // 將userToken & nickname 存入localStorage中
-                localStorage.setItem('userToken',getToken);
-                localStorage.setItem('nickname',getNickname);
-                localStorage.setItem('email',getEmail)
                 
-                let checkOneEmail = sha256(getEmail); // 加密做第二次確認
-                localStorage.setItem('checkName',checkOneEmail)
 
-                // 取上次 (歷史紀錄中) 登出的會員及index、id碼
-                let checkEmail = localStorage.getItem(`${checkOneEmail}`);
-                let newCheckEmail = JSON.parse(checkEmail || '1234');
-        
-                // 與歷史紀錄中的e email紀錄相同，才會走歷史紀錄方式
-                if (newCheckEmail[0] == checkOneEmail ){
+            // 登入成功後將表頭的token存起來
+            const getToken = response.headers.authorization;
+            const getNickname = response.data.nickname;
+            const getEmail = response.data.email;
+            const success = response.data.message;
+
+            // 將userToken & nickname 存入localStorage中
+            localStorage.setItem('userToken',getToken);
+            localStorage.setItem('nickname',getNickname);
+            localStorage.setItem('email',getEmail)
+            
+            let checkOneEmail = sha256(getEmail); // 加密做第二次確認
+            localStorage.setItem('checkName',checkOneEmail)
+
+            // 取上次 (歷史紀錄中) 登出的會員及index、id碼
+            let checkEmail = localStorage.getItem(`${checkOneEmail}`);
+            let newCheckEmail = JSON.parse(checkEmail || '1234');
+    
+            // 與歷史紀錄中的e email紀錄相同，才會走歷史紀錄方式
+            if (newCheckEmail[0] == checkOneEmail ){
+                const config = {
+                    headers:{
+                        "Content-Type":"application/json",
+                        "Authorization":getToken
+                    }
+                }
+                axios.get(getListApi,config)
+                .then(response=>{
+                    // 原資料陣列
+                    const list = response.data.todos;
+
+                    // 再次處理陣列，把開頭email拿掉
+                    let newEList = [];
+                    newCheckEmail.forEach((value)=>{
+                        newEList[value.index] = value.id
+                    
+                    })
+                    // 移除未定義的值
+                    let filterDeleteUndefined = newEList.filter(function(value){
+                        return value !== undefined;
+                    })
+
+                    // 比對 歷史紀錄中的index、id 把新的放入對應的index資料中
+                    let test = [];
+                    filterDeleteUndefined.forEach((value1,index1)=>{
+                        list.forEach((value)=>{
+                            if ( value1 == value.id){
+                                test[index1] = {...value}
+                            }
+                        })
+                    })
+                    const newList = JSON.stringify(test);
+
+                    // 將核對後的陣列存入localStorage
+                    localStorage.setItem('listData',newList);
+                    // console.log('成功將原陣列存在暫存(有歷史紀錄)')
+
+                    let timerInterval
+                        Swal.fire({
+                        title: '登入中',
+                        html: '請稍後，檢查帳號中 <b></b>',
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                            }, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                        }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            Swal.fire({
+                                title: '登入成功!',
+                                html: `歡迎 ${getNickname} ${success}，即將前往行事曆`,
+                                timer: 1500,
+                                timerProgressBar: true,
+                                }).then((result) => {
+                                /* Read more about handling dismissals below */
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                    // 跳轉頁面夾帶資料
+                                    navigate('/todoList')
+                                }
+                            })
+                        }
+                    })
+
+                }).catch((error)=>{
+                    toast.error(`${error.response.data.message}，請再次確認帳號密碼`,options)
+                    })
+                }else {
+                    // 歷史紀錄中沒有e的存在時，取全新的資料
                     const config = {
                         headers:{
                             "Content-Type":"application/json",
@@ -88,86 +165,62 @@ function Login() {
                     }
                     axios.get(getListApi,config)
                     .then(response=>{
+                        // console.log('原資料',response)
                         // 原資料陣列
                         const list = response.data.todos;
-
-                        // 再次處理陣列，把開頭email拿掉
-                        let newEList = [];
-                        newCheckEmail.forEach((value)=>{
-                            newEList[value.index] = value.id
-                        
-                        })
-                        // 移除未定義的值
-                        let filterDeleteUndefined = newEList.filter(function(value){
-                            return value !== undefined;
-                        })
-
-                        // 比對 歷史紀錄中的index、id 把新的放入對應的index資料中
-                        let test = [];
-                        filterDeleteUndefined.forEach((value1,index1)=>{
-                            list.forEach((value)=>{
-                                if ( value1 == value.id){
-                                    test[index1] = {...value}
+                        // console.log(list)
+                        const newList = JSON.stringify(list);
+                        // 取新陣列暫存
+                        // console.log('原陣列',newList)
+                        localStorage.setItem('listData',newList);
+                        // console.log('成功將原陣列存在暫存')
+                        let timerInterval
+                        Swal.fire({
+                        title: '登入中',
+                        html: '請稍後，檢查帳號中 <b></b>',
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            Swal.showLoading()
+                            const b = Swal.getHtmlContainer().querySelector('b')
+                            timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                            }, 100)
+                        },
+                        willClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                        }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            Swal.fire({
+                                title: '登入成功!',
+                                html: `歡迎 ${getNickname} ${success}，即將前往行事曆`,
+                                timer: 1500,
+                                timerProgressBar: true,
+                                }).then((result) => {
+                                /* Read more about handling dismissals below */
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                    // 跳轉頁面夾帶資料
+                                    navigate('/todoList')
                                 }
                             })
-                        })
-                        const newList = JSON.stringify(test);
-
-                        // 將核對後的陣列存入localStorage
-                        localStorage.setItem('listData',newList);
-                        // console.log('成功將原陣列存在暫存(有歷史紀錄)')
-
-                        toast.success(`歡迎${getNickname}${success}，即將前往行事曆`,options)
-                        // 成功登入進入todoList頁面
-                        setTimeout(()=>{
-                            // 跳轉頁面夾帶資料
-                            navigate('/todoList')
-                        },2500)
-
+                        }
+                    })
+    
                     }).catch((error)=>{
                         toast.error(`${error.response.data.message}，請再次確認帳號密碼`,options)
                     })
-                }else {
-                    // 歷史紀錄中沒有e的存在時，取全新的資料
-             
-                        const config = {
-                            headers:{
-                                "Content-Type":"application/json",
-                                "Authorization":getToken
-                            }
-                        }
-                        axios.get(getListApi,config)
-                        .then(response=>{
-                            // console.log('原資料',response)
-                            // 原資料陣列
-                            const list = response.data.todos;
-                            // console.log(list)
-                            const newList = JSON.stringify(list);
-                            // 取新陣列暫存
-                            // console.log('原陣列',newList)
-                            localStorage.setItem('listData',newList);
-                            // console.log('成功將原陣列存在暫存')
-        
-                            toast.success(`歡迎${getNickname}${success}，即將前往行事曆`,options)
-                            // 成功登入進入todoList頁面
-                            setTimeout(()=>{
-                                // 跳轉頁面夾帶資料
-                                navigate('/todoList')
-                            },2500)
-        
-                        })
-                        .catch((error)=>{
-                            toast.error(`${error.response.data.message}，請再次確認帳號密碼`,options)
-                        })
                         
-                    }
+                }
                    
 
             }).catch((error)=>{
                 toast.error(`${error.response.data.message}，請再次確認帳號密碼`,options)
                 // alert(`${error.response.data.message}，請再次確認帳號密碼`)   
-            })
-    }
+                }
+
+    )}
+    
 
     useEffect(()=>{
         let newToken = localStorage.getItem('userToken');
@@ -261,7 +314,6 @@ function Login() {
         }
     }
 
-   
     return ( 
             <div id="loginPage" className="bg-yellow">
             <div className="conatiner loginPage vhContainer ">
@@ -285,7 +337,10 @@ function Login() {
                         <span>{errors.password?.message}</span>
                         <input className="formControls_btnSubmit" type="submit" value="登入" />
                         <Link className="formControls_btnLink" to="/register">註冊帳號</Link>
-                    </form> :  
+                        <br />
+                       
+                    </form> 
+                    :  
                     
                     <form className="formControls">
                         <div style={{width:'115%',alignItems:'center',justifyContent:'center'}}>
@@ -295,6 +350,7 @@ function Login() {
                         </div>
                         <input className="formControls_btnSubmit" type="button" value="登出"  onClick={signOut}/>
                         <Link className="formControls_btnLink" to="/todoList">返回待辦頁面</Link>
+                        
                     </form>
                     
                     
