@@ -164,7 +164,7 @@ function TodoList() {
         <div>
     {userToken ?  <div id="todoListPage" className="bg-half">
                 <nav>
-                <h1><a href="#">ONLINE TODO LIST</a></h1>
+                <h1><Link to="/">ONLINE TODO LIST</Link></h1>
                 <ul>
                     <li className="todo_sm"><span>{nickname? nickname:'尚未登入成功'}的代辦</span></li>
                     <li><a onClick={signOut}>登出</a></li>
@@ -228,7 +228,7 @@ function TodoList() {
                             <h1 >您尚未登入，無權限訪問此頁面！ </h1>
                         </div>
                         <div className='todoList_error_a'>
-                            <a href="/">前往登入頁</a>
+                            <Link to="/">前往登入頁</Link>
                         </div>
                     </div>}
         
