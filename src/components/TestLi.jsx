@@ -79,7 +79,7 @@ function TestLi ({value,title,index,userToken,toast,newTodoList,setNewTodoList,o
                     setNewTodoList(item)
                 })
 
-            // console.log('完成取消編輯',id)
+            console.log('完成取消編輯',id)
             setCheckEdit(0) // 恢復成存文字
         }
     }

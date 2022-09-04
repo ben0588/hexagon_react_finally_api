@@ -88,15 +88,16 @@ function Login() {
                         "Authorization":getToken
                     }
                 }
+            
                 axios.get(getListApi,config)
                 .then(response=>{
                     // 原資料陣列
                     const list = response.data.todos;
-
                     // 再次處理陣列，把開頭email拿掉
                     let newEList = [];
                     newCheckEmail.forEach((value)=>{
                         newEList[value.index] = value.id
+                    
                     
                     })
                     // 移除未定義的值
@@ -117,7 +118,7 @@ function Login() {
 
                     // 將核對後的陣列存入localStorage
                     localStorage.setItem('listData',newList);
-                    // console.log('成功將原陣列存在暫存(有歷史紀錄)')
+                    // console.log('成功將原陣列存在暫存(有歷史紀錄)');
 
                     let timerInterval
                         Swal.fire({
