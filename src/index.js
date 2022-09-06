@@ -10,5 +10,3 @@ root.render(
     <App />
   </HashRouter>
 );
-
-// 記錄時間:開始時間 8/30 05:10開始

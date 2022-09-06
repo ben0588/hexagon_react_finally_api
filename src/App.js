@@ -34,5 +34,3 @@ function App() {
 
 export default App;
 
-
-// 記錄時間:開始時間8/31 11:06開始  16停 11:35繼續
