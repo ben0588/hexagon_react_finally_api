@@ -23,11 +23,8 @@ function App() {
     const location = useLocation()
 
     useEffect(() => {
-        var ga = ReactGA.ga()
-
         ReactGA.initialize('G-F4N0NX0YNJ')
-        // ReactGA.pageview(window.location.pathname + window.location.search)
-        ga('send', 'pageview')
+        ReactGA.pageview(window.location.pathname + window.location.search)
     }, [location])
     // console.log(location)
     return (
