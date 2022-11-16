@@ -23,10 +23,13 @@ function App() {
     const location = useLocation()
 
     useEffect(() => {
+        var ga = ReactGA.ga()
+
         ReactGA.initialize('G-F4N0NX0YNJ')
-        ReactGA.pageview(window.location.pathname + window.location.search)
+        // ReactGA.pageview(window.location.pathname + window.location.search)
+        ga('send', 'pageview')
     }, [location])
-    console.log(location)
+    // console.log(location)
     return (
         <>
             <Routes>
