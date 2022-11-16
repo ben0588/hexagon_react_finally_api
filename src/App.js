@@ -23,7 +23,7 @@ function App() {
     const location = useLocation()
 
     useEffect(() => {
-        ReactGA.initialize('G-F4N0NX0YNJ')
+        ReactGA.initialize('UA-249718443-1')
         ReactGA.pageview(window.location.pathname + window.location.search)
     }, [location])
     // console.log(location)
