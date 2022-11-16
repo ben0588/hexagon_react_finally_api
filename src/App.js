@@ -32,7 +32,7 @@ function App() {
 
         // 4 代測試
         ReactGA.initialize('G-F4N0NX0YNJ')
-        ReactGA.send({ hitType: 'pageview', page: '/my-path' })
+        ReactGA.send({ hitType: 'pageview', page: location.pathname })
     }, [location])
     // console.log(location)
     return (
