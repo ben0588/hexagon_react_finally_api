@@ -16,15 +16,23 @@ import Register from './components/register'
 // 待辦事項
 import TodoList from './components/todoList'
 
-// 引用 react-ga ( google 分析)
-import ReactGA from 'react-ga'
+// 引用 react-ga ( google 分析 只支持 3 代 UA-XXX開頭 )
+// import ReactGA from 'react-ga'
+
+// 測試 react-ga4 ( G-XXX開頭 )
+import ReactGA from 'react-ga4'
 
 function App() {
     const location = useLocation()
 
     useEffect(() => {
-        ReactGA.initialize('UA-249718443-1')
-        ReactGA.pageview(window.location.pathname + window.location.search)
+        // 3 代設定
+        // ReactGA.initialize('UA-249718443-1')
+        // ReactGA.pageview(window.location.pathname + window.location.search)
+
+        // 4 代測試
+        ReactGA.initialize('G-F4N0NX0YNJ')
+        ReactGA.send({ hitType: 'pageview', page: window.location.pathname })
     }, [location])
     // console.log(location)
     return (
