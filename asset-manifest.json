@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/hexagon_react_finally_api/static/css/main.6bf01d3d.css",
-    "main.js": "/hexagon_react_finally_api/static/js/main.cb7d5202.js",
+    "main.js": "/hexagon_react_finally_api/static/js/main.51821672.js",
     "static/media/error.jpg": "/hexagon_react_finally_api/static/media/error.755e062ed32b01808e7d.jpg",
     "static/media/empty.png": "/hexagon_react_finally_api/static/media/empty.c535b954668d18ec38a3.png",
     "index.html": "/hexagon_react_finally_api/index.html",
     "main.6bf01d3d.css.map": "/hexagon_react_finally_api/static/css/main.6bf01d3d.css.map",
-    "main.cb7d5202.js.map": "/hexagon_react_finally_api/static/js/main.cb7d5202.js.map"
+    "main.51821672.js.map": "/hexagon_react_finally_api/static/js/main.51821672.js.map"
   },
   "entrypoints": [
     "static/css/main.6bf01d3d.css",
-    "static/js/main.cb7d5202.js"
+    "static/js/main.51821672.js"
   ]
 }
