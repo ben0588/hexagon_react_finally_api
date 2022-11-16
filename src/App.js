@@ -33,15 +33,9 @@ function App() {
         // 4 代測試
         ReactGA.initialize('G-F4N0NX0YNJ')
         ReactGA.send({ hitType: 'pageview', page: location.pathname })
-
-        // 新增事件追蹤
-        ReactGA.event({
-            category: 'your category',
-            action: 'your action',
-            label: 'your label', // optional
-            value: 99, // optional, must be a number
-            nonInteraction: true, // optional, true/false
-            transport: 'xhr', // optional, beacon/xhr/image
+        // 記錄每一頁
+        window.gtag('event', 'page_view', {
+            page_path: location.pathname + location.search,
         })
     }, [location])
     // console.log(location)
