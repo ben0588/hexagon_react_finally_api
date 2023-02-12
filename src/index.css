@@ -1,675 +1,764 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
 
 body {
-  line-height: 1;
+    line-height: 1;
 }
 
-ol, ul {
-  list-style: none;
+ol,
+ul {
+    list-style: none;
 }
 
-blockquote, q {
-  quotes: none;
+blockquote,
+q {
+    quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 * {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
-*, *::before, *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .selector-for-some-widget {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  font-family: "Noto Sans TC";
-  margin: 0 auto;
-  overflow: hidden;
+    font-family: 'Noto Sans TC';
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 img {
-  width: 100%;
-  vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
 }
 
 .logoImg {
-  margin-bottom: 16px;
+    margin-bottom: 16px;
 }
 
 .vhContainer {
-  height: 100vh;
+    height: 100vh;
 }
 
 .bg-yellow {
-  background-color: #FFD370;
+    /* background-color: #ffd370; */
+    background-color: #55efc4;
 }
 
 .bg-half {
-  background-image: linear-gradient(175deg, #FFD370 60%, #fff 40%);
+    background-image: linear-gradient(175deg, #55efc4 60%, #fff 40%);
 }
 
 .conatiner {
-  margin: 0 auto;
-  padding: 87px 32px;
+    margin: 0 auto;
+    padding: 87px 32px;
 }
 
 @media (max-width: 576px) {
-  .conatiner {
-    padding: 18px 32px;
-  }
+    .conatiner {
+        padding: 18px 32px;
+    }
 }
 
 .side {
-  width: 386px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+    /* width: 386px; */
+    width: 400px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 @media (max-width: 576px) {
-  .side {
-    width: 100%;
-  }
+    .side {
+        width: 100%;
+    }
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 24px 32px 0 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 24px 32px 0 32px;
 }
 
 @media (max-width: 576px) {
-  nav {
-    margin-bottom: 16px;
-  }
+    nav {
+        margin-bottom: 16px;
+    }
 }
 
 nav h1 a {
-  width: 243px;
-  height: 39px;
-  background: url(https://upload.cc/i1/2022/03/23/8vTzYG.png) no-repeat;
-  display: block;
-  text-indent: 101%;
-  overflow: hidden;
-  white-space: nowrap;
+    width: 243px;
+    height: 39px;
+    background: url(https://upload.cc/i1/2022/03/23/8vTzYG.png) no-repeat;
+    display: block;
+    text-indent: 101%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1rem;
 }
 
 @media (max-width: 576px) {
-  nav ul li {
-    margin-top: 11px;
-  }
+    nav ul li {
+        margin-top: 11px;
+    }
 }
 
 nav ul a {
-  text-decoration: none;
-  color: #333333;
-  margin-left: 24px;
+    text-decoration: none;
+    color: #333333;
+    margin-left: 24px;
 }
 
 @media (max-width: 576px) {
-  nav ul a {
-    margin-left: 0;
-  }
+    nav ul a {
+        margin-left: 0;
+    }
 }
 
 nav ul a:hover {
-  color: #d87355;
+    color: #d87355;
 }
 
 nav ul a span {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 @media (max-width: 576px) {
-  nav ul .todo_sm {
-    display: none;
-  }
+    nav ul .todo_sm {
+        display: none;
+    }
 }
 
 @media (max-width: 576px) {
-  .d-m-n {
-    display: none;
-  }
+    .d-m-n {
+        display: none;
+    }
+}
+
+.todoListImg {
+    /* width: 500px; */
+    /* height: 600px; */
 }
 
 .formControls {
-  margin-left: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+    margin-left: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 @media (max-width: 576px) {
-  .formControls {
-    margin-left: 0;
-  }
+    .formControls {
+        margin-left: 0;
+    }
 }
 
 .formControls .formControls_txt {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 24px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 24px;
 }
 
 @media (max-width: 576px) {
-  .formControls .formControls_txt {
-    font-size: 1.25rem;
-    text-align: center;
-  }
+    .formControls .formControls_txt {
+        font-size: 1.25rem;
+        text-align: center;
+    }
 }
 
 .formControls .formControls_label {
-  font-size: 0.875rem;
-  font-weight: bold;
-  margin: 16px 0 4px 0;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin: 16px 0 4px 0;
 }
 
 .formControls .formControls_input {
-  font-weight: normal;
-  border: none;
-  border-radius: 10px;
-  width: 304px;
-  padding: 12px 16px;
-  margin: 4px 0;
+    font-weight: normal;
+    border: none;
+    border-radius: 10px;
+    width: 304px;
+    padding: 12px 16px;
+    margin: 4px 0;
 }
 
 .formControls .formControls_input:focus {
-  outline: 3px solid #fff;
+    outline: 3px solid #fff;
 }
 
 .formControls .formControls_input::-webkit-input-placeholder {
-  color: #9F9A91;
+    color: #9f9a91;
 }
 
 .formControls .formControls_input:-ms-input-placeholder {
-  color: #9F9A91;
+    color: #9f9a91;
 }
 
 .formControls .formControls_input::-ms-input-placeholder {
-  color: #9F9A91;
+    color: #9f9a91;
 }
 
 .formControls .formControls_input::placeholder {
-  color: #9F9A91;
+    color: #9f9a91;
 }
 
 .formControls .formControls_btnSubmit {
-  width: 128px;
-  height: 48px;
-  border: none;
-  border-radius: 10px;
-  background: #333333;
-  color: #fff;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  margin: 24px 0;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1rem;
+    width: 128px;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    background: #333333;
+    color: #fff;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    margin: 24px 0;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .formControls a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .formControls span {
-  margin: 4px 0 16px 0;
-  color: #d87355;
-  font-size: 0.875rem;
+    margin: 4px 0 16px 0;
+    color: #d87355;
+    font-size: 0.875rem;
 }
 
 .formControls .formControls_btnLink {
-  display: block;
-  color: #333333;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
+    display: block;
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
 }
 
 .loginPage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 800px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 800px;
 }
 
 @media (max-width: 576px) {
-  .loginPage {
-    width: 100%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
+    .loginPage {
+        width: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
-    margin: 0 auto;
-    padding: 48px 31px;
-    -webkit-box-pack: start;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 48px 31px;
+        -webkit-box-pack: start;
         -ms-flex-pack: start;
-            justify-content: start;
-  }
+        justify-content: start;
+    }
 }
 
 .signUpPage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 800px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 800px;
 }
 
 @media (max-width: 576px) {
-  .signUpPage {
-    width: 100%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
+    .signUpPage {
+        width: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
-    margin: 48px auto 0 auto;
-    padding: 48px 31px;
-  }
+        flex-direction: column;
+        margin: 48px auto 0 auto;
+        padding: 48px 31px;
+    }
 }
 
 .todoListPage {
-  padding: 16px 32px;
+    padding: 16px 32px;
 }
 
 @media (max-width: 576px) {
-  .todoListPage {
-    background-image: linear-gradient(175deg, #FFD370 100%, #fff 0%);
-  }
+    .todoListPage {
+        background-image: linear-gradient(175deg, #55efc4 100%, #fff 0%);
+    }
 }
 
 .todoList_Content {
-  width: 500px;
-  margin: 0 auto;
+    width: 500px;
+    margin: 0 auto;
 }
 
 @media (max-width: 576px) {
-  .todoList_Content {
-    width: 100%;
-  }
+    .todoList_Content {
+        width: 100%;
+    }
 }
 
 .inputBox {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  margin-bottom: 16px;
-  -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    margin-bottom: 16px;
+    -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .inputBox input {
-  background: #fff;
-  border: none;
-  border-radius: 10px;
-  position: relative;
-  width: 100%;
-  height: 47px;
-  font-size: 1rem;
-  padding-left: 16px;
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    height: 47px;
+    font-size: 1rem;
+    padding-left: 16px;
 }
 
 .inputBox a {
-  display: block;
-  width: 40px;
-  height: 39px;
-  position: absolute;
-  background: #333333;
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 10px;
-  top: 4px;
-  right: 4px;
-  padding: 10px;
+    display: block;
+    width: 40px;
+    height: 39px;
+    position: absolute;
+    background: #333333;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    top: 4px;
+    right: 4px;
+    padding: 10px;
 }
 
 .todoList_list {
-  background: #fff;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .todoList_list .todoList_tab {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
 }
 
 .todoList_list .todoList_tab li {
-  width: 100%;
+    width: 100%;
 }
 
 .todoList_list .todoList_tab a {
-  display: block;
-  color: #9F9A91;
-  text-decoration: none;
-  line-height: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding: 16px;
-  border-bottom: 2px solid #efefef;
+    display: block;
+    color: #9f9a91;
+    text-decoration: none;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+    border-bottom: 2px solid #efefef;
 }
 
 .todoList_list .todoList_tab .active {
-  color: #333333;
-  border-bottom: 2px solid #333333;
+    color: #333333;
+    border-bottom: 2px solid #333333;
 }
 
 .todoList_list .todoList_items {
-  padding-top: 23px;
-  padding-left: 24px;
-  padding-right: 17px;
-  padding-bottom: 32px;
+    padding-top: 23px;
+    padding-left: 24px;
+    padding-right: 17px;
+    padding-bottom: 32px;
 }
 
 .todoList_list .todoList_items .todoList_item {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .todoList_list .todoList_items .todoList_label {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 15px;
-  color: #333333;
-  line-height: 20.27px;
-  /* margin: auto; */
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+    color: #333333;
+    line-height: 20.27px;
+    /* margin: auto; */
 }
 
 .todoList_list .todoList_items .todoList_input {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #9F9A91;
-  border-radius: 5px;
-  margin-right: 16px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #9f9a91;
+    border-radius: 5px;
+    margin-right: 16px;
 }
 
 .todoList_list .todoList_items .todoList_input:checked ~ span {
-  color: #9F9A91;
-  text-decoration: line-through;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
+    color: #9f9a91;
+    text-decoration: line-through;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .todoList_list .todoList_items li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 17px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 17px;
 }
 
 .todoList_list .todoList_items li a {
-  margin-left: 17px;
-  display: block;
-  font-size: 14px;
-  color: #333333;
-  opacity: 0;
+    margin-left: 17px;
+    display: block;
+    font-size: 14px;
+    color: #333333;
+    opacity: 0;
 }
 
 .todoList_list .todoList_items li:hover a {
-  opacity: 1;
+    opacity: 1;
 }
 
 .todoList_list .todoList_statistics {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
 
 .todoList_list .todoList_statistics p {
-  color: #333333;
-  font-size: 0.875rem;
+    color: #333333;
+    font-size: 0.875rem;
 }
 
 .todoList_list .todoList_statistics a {
-  color: #9F9A91;
-  font-size: 0.875rem;
-  text-decoration: none;
+    color: #9f9a91;
+    font-size: 0.875rem;
+    text-decoration: none;
 }
 
 /* 輸入框的浮水印提示 */
 .checkStyle::placeholder {
-  color: red;
-  font-weight: bolder;
+    color: red;
+    font-weight: bolder;
 }
 
 /* 新增代辦事項的按鈕 */
-.icon1 svg{
+.icon1 svg {
     color: rgb(255, 255, 255);
     width: 30px;
     height: 25px;
-    position:absolute;
-    display:flex;
+    position: absolute;
+    display: flex;
     margin: auto;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
 }
 
 /* 清單中後方的刪除按鈕 */
 .icon_span {
-  position:relative;
-  height: 100%;
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 15px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
 }
 
 /* 清單中後方的刪除按鈕 */
 .todoList_no_data {
-  position: relative;
-  height:500px;
-  display:flex;
-  margin: auto;
-  justify-content:center;
-  align-items: center;
+    position: relative;
+    height: 500px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 目前無代辦事項的文字樣式 */
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
-.todoList_no_h1{
-  position: absolute;
-  top:15%;
-  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-} 
+.todoList_no_h1 {
+    position: absolute;
+    top: 15%;
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
 
 /* 目前無代辦事項RWD設定 */
 .todoList_no_data {
-  width: 500px;
-  margin: 0 auto;
+    width: 500px;
+    margin: 0 auto;
 }
 
 @media (max-width: 576px) {
-  .todoList_no_data {
-    width: 100%;
-  }
+    .todoList_no_data {
+        width: 100%;
+    }
 }
 
 /* todoList 在沒有登入的狀態訪問時的頁面 */
-.todoList_error_data{
-  position: relative;
-  height:100%;
-  display:flex;
-  margin: auto;
-  justify-content:center;
-  align-items: center;
+.todoList_error_data {
+    position: relative;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
-.todoList_error_h1{
-  position: absolute;
-  top:100%;
-  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
-  color:red;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+.todoList_error_h1 {
+    position: absolute;
+    top: 100%;
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    color: red;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 .todoList_error_a {
-  position: absolute;
-  top:110%;
-  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
-  color:red;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+    position: absolute;
+    top: 110%;
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    color: red;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .todoList_error_img img {
-  width: 40% !important;
-  background-color: #140b0b;
-  display: flex;
-  margin: auto;
+    width: 40% !important;
+    background-color: #140b0b;
+    display: flex;
+    margin: auto;
 }
 
 /* 在登入狀態時訪問登入頁 */
 .userNameShow {
-  font-weight: normal;
-  border: none;
-  border-radius: 10px;
-  width: 304px;
-  padding: 12px 16px;
-  margin: 4px 0;
+    font-weight: normal;
+    border: none;
+    border-radius: 10px;
+    width: 304px;
+    padding: 12px 16px;
+    margin: 4px 0;
 }
 
-.userNameShow::placeholder{
-  color: #ff0000;
+.userNameShow::placeholder {
+    color: #ff0000;
 }
 
 /* 測試在輸入框中新增圖標 */
-.formControls_label{
-  width: 200px;
-  position: relative;
+.formControls_label {
+    width: 200px;
+    position: relative;
 }
 
-.icon-show{
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 200%;
-  right: -42%;
-  color: rgb(58, 58, 58);
+.icon-show {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 200%;
+    right: -42%;
+    color: rgb(58, 58, 58);
 }
-
 
 /* .formControls_input {
   background: url('https://www.svgrepo.com/show/337287/eyes.svg') no-repeat scroll 7px 7px;
