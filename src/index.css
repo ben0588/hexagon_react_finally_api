@@ -171,9 +171,11 @@ img {
     height: 100vh;
 }
 
+/* 改變背景圖片 */
 .bg-yellow {
     /* background-color: #ffd370; */
-    background-color: #55efc4;
+    /* background-color: #55efc4; */
+    background: linear-gradient(to bottom right, #2980b9, #6dd5fa, #ffff);
 }
 
 .bg-half {
@@ -284,8 +286,11 @@ nav ul a span {
 }
 
 .todoListImg {
-    /* width: 500px; */
-    /* height: 600px; */
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    border-radius: 5px;
+    object-fit: cover;
 }
 
 .formControls {
